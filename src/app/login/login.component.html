@@ -1,0 +1,57 @@
+<ng-container
+    *ngIf="logged === true; then loginTemplate; else registerTemplate">
+</ng-container>
+
+<ng-template #loginTemplate>
+    <div class="center-div">
+        <font size="6" face="Arial" color="black"><p style="text-align: center">Welcome!</p></font>
+        <font size="5" face="Arial" color="black"><p style="text-align: center">Please sign in</p></font>
+        <form #empForm="ngForm">
+            <div class="form-group">
+                <label for="exampleInputEmail">Email</label>
+                <input type="email" name="mail" [(ngModel)]="user.mail" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter email address"/>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword">Password</label>
+                <input type="password" name="password" [(ngModel)]="user.password" class="form-control" id="exampleInputPassword" placeholder="Password"/>
+            </div>
+        </form>
+        <br/>
+        <font size="3" face="Arial" color="red"><p style="text-align: center">{{infoInvalidData}}</p></font>
+        <button type="button" (click)="logIn()" class="btn btn-primary btn100width">Sign in</button><br/><br/>
+        <button type="button" (click)="register()" class="btn btn-success btn-100width">Sign up</button>
+    </div>
+</ng-template>
+
+<ng-template #registerTemplate>
+    <div class="center-div">
+        <font size="6" face="Arial" color="black"><p style="text-align: center">Welcome!</p></font>
+        <font size="5" face="Arial" color="black"><p style="text-align:center">Please sign up</p></font>
+        <form>
+            <div class="form-group">
+                <label for="exampleInputEmail">Email</label>
+                <input type="email" name="mail" [(ngModel)]="user.mail" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter email address">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputName">Name</label>
+                <input type="text" name="name" [(ngModel)]="user.name" class="form-control" id="exampleInputName" aria-describedby="text" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputSurname">Surname</label>
+                <input type="text" name="surname" [(ngModel)]="user.surname" class="form-control" id="exampleInputSurname" placeholder="Enter your surname">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword">Password</label>
+                <input type="password" name="password" [(ngModel)]="user.password" class="form-control" id="exampleInputPassword" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPhoneNumber">Phone number</label>
+                <input type="number" name="phoneNumber" [(ngModel)]="user.phoneNumber" class="form-control" id="exampleInputPhoneNumber" placeholder="Enter phone number">
+            </div>
+        </form>
+        <br/>
+        <font size="3" face="Arial" color="red"><p style="text-align: center">{{infoInvalidData}}</p></font>
+        <button type="button" (click)="register()" class="btn btn-success btn-100width">Sign up</button>
+        <button type="button" (click)="logIn()" class="btn btn-success btn-100width">Sign in</button>
+    </div>
+</ng-template>
