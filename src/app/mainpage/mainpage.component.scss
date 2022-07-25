@@ -1,0 +1,38 @@
+$bg-white: #f0f5f5;
+$bg-green: rgb(54, 160, 192);
+$border-green: rgb(36, 146, 128);
+
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+.logo {
+    background-color: $bg-white;
+}
+
+.btn-group button {
+    background-color: $bg-green;
+    border: 1px solid $border-green;
+    color: $bg-white;
+    padding: 10px 24px;
+    cursor: pointer;
+    float: left;
+}
+
+.btn-group button:not(:last-child) {
+    border-right: none;
+}
+
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.btn-group button:hover {
+    background-color: #2527c0;
+}
