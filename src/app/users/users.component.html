@@ -51,14 +51,25 @@
                     <input style="width: 30%;" type="date" name="birthDate" [(ngModel)]="userEdit.birthDate" class="form-control" id="exampleInputBirthDate" placeholder="Birth Date"/>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputContactType">Contact Type</label>
-                    <input style="width: 30%;" type="text" name="name" [(ngModel)]="userEdit.name" class="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Name"/>
+                    <select (change)="selectOption($event.target.value)" [(ngModel)]="userEdit.contactType" style="width: 30%;" name="contactType" class="form-select" id="exampleInputType">
+                        <option [value]="type.id" *ngFor="let type of contactTypes">{{type.name}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputContactRole">Contact Role</label>
-                    <input style="width: 30%;" type="text" name="name" [(ngModel)]="userEdit.name" class="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Name"/>
+                    <select *ngIf="type.value == 1; else promptField" (change)="selectOption($event.target.value)" [(ngModel)]="userEdit.contactRole" style="width: 30%;" name="contactRole" class="form-select" id="exampleInputRole">
+                        <option [value]="role.id" *ngFor="let role of businessRoles">{{role.name}}</option>
+                    </select>
+                    <ng-template #promptField>
+                        <label for="exampleInputContactRole">Contact Role</label>
+                        <input style="width: 30%;" type="text" name="contactRole" [(ngModel)]="userEdit.contactRole" class="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Name"/>
+                    </ng-template>
                 </div>
             </form>
+            <br/>
+            <button type="button" (click)="editUserInDB()" class="btn btn-primary btn-100width">Edit</button><br/><br/>
         </div>
+    </ng-template>
+    <ng-template ngSwitchDefault>
+        
     </ng-template>
 </div>

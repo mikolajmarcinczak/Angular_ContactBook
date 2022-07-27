@@ -14,6 +14,21 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
 
+import { Routes, RouterModule } from '@angular/router';
+
+const routes: Routes = [
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {
+    path: 'login',
+    component: LoginComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
+    component: MainpageComponent,
+    pathMatch: 'full'
+  }
+];
 
 @NgModule({
   declarations: [
@@ -29,7 +44,8 @@ import { UsersComponent } from './users/users.component';
     FormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    RouterModule.forRoot(routes)
   ],
   providers: [
     CookieService
